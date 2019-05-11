@@ -22,8 +22,6 @@ export default class Login extends Component {
       .then(function(result) {
         console.log(result);
         if (result) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          //   var token = result.credential.accessToken;
           me.props.history.push("/monitores");
         }
       })
