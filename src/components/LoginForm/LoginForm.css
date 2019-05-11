@@ -1,0 +1,9 @@
+.rel-title-login-form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.rel-pr-0{
+    padding-right: 0 !important;
+}

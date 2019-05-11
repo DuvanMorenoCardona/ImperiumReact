@@ -1,0 +1,19 @@
+.rel-title-login-form{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rel-title-login-form h1{
+    font-size: 5em;
+    font-weight: 200;
+    color:#b71c1c;
+    margin-bottom: 0;
+}
+
+.rel-title-login-form p{
+    margin-top: 0;
+    margin-bottom: 13vh;
+    color:#4C4C4C;
+}
