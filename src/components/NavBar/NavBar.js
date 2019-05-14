@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./NavBar.css";
 
-import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
+
+import AppBar from "../../molecules/AppBar/AppBar";
 
 export default class NavBar extends Component {
   constructor(props) {
@@ -14,9 +14,9 @@ export default class NavBar extends Component {
   render() {
     
     return (
-      <Grid item xs={6}>
-        gcvhbjn
-      </Grid>
+      <div>
+        <AppBar/>
+      </div>
     );
   }
 }

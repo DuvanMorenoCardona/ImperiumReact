@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Monitores.css";
 
+import NavBar from "../../components/NavBar/NavBar";
+
 export default class Monitores extends Component {
   constructor(props) {
     super(props);
@@ -9,14 +11,9 @@ export default class Monitores extends Component {
     };
   }
   render() {
-    let divstylehp = {
-      width: this.props.hp + "%"
-    };
     return (
-      <div className="rel-barHp-content">
-        <div className="rel-barhp" style={divstylehp}>
-          <h5>HP</h5>
-        </div>
+      <div className="">
+        <NavBar/>
       </div>
     );
   }

@@ -1,0 +1,46 @@
+.menuButton {
+  margin-left: -12px;
+  margin-right: 20px;
+}
+
+.rel-icon-app-bar {
+  margin-right: 2em;
+}
+
+.rel-title-app-bar {
+  flex-grow: 1;
+}
+
+.grow {
+  flex-grow: 10;
+}
+
+.inputRoot {
+  color: "inherit";
+  width: "100%";
+}
+
+.inputInput {
+  padding-top: 1;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 100px;
+}
+
+.rel-app-bar-search {
+  display: flex;
+}
+
+.rel-app-bar-searchIcon {
+  font-size: 1em;
+  color: white;
+}
+
+.root {
+  width: "100%";
+}
+.rel-app-bar-textField{
+    width: 200;
+    margin-left: 1em;
+    margin-right: 1em;
+}
