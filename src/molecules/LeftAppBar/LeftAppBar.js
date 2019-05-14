@@ -26,6 +26,12 @@ const styles = theme => ({
     height: "100%",
     padding: "0px !important"
   },
+  paperFixed: {
+    height: "100%",
+    padding: "0px !important",
+    position: "fixed",
+    marginTop:"72px"
+  },
   primary: {
     fontSize: "25px"
   },
@@ -50,7 +56,7 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div className={classes.paper}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paperFixed}>
             <MenuList className={classes.paper}>
               <MenuItem className={classes.menuItem}>
                 <ListItemIcon>

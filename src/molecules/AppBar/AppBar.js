@@ -34,7 +34,9 @@ const styles = theme => ({
     marginRight: 20
   },
   AppBar: {
-    backgroundColor: "#b71c1c"
+    backgroundColor: "#b71c1c",
+    top: 0,
+    bottom: "auto"
   },
   search: {
     position: "relative",
@@ -128,7 +130,7 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div>
-          <AppBar position="sticky" className={classes.AppBar}>
+          <AppBar position="fixed" className={classes.AppBar}>
             <Toolbar>
               <div className={classes.grow}>
                 <Typography variant="h4" color="inherit">
@@ -151,7 +153,10 @@ export default withStyles(styles)(
                   }}
                 />
               </div>
-              <FormControl variant="outlined" className={classes.formControl}>
+              <FormControl
+                variant="outlined"
+                className={classes.formControl}
+              >
                 <InputLabel
                   ref={ref => {
                     this.InputLabelRef = ref;
