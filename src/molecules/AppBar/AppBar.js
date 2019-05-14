@@ -25,9 +25,9 @@ const styles = theme => ({
     flexGrow: 1
   },
   grow: {
-    display:"flex",
+    display: "flex",
     flexGrow: 1,
-    alignItems:"center",
+    alignItems: "center"
   },
   menuButton: {
     marginLeft: -12,
@@ -78,12 +78,14 @@ const styles = theme => ({
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120,
-    maxWidth: 400
+    maxWidth: 400,
+    borderColor: "#92a8d1"
   },
   button: {
     margin: theme.spacing.unit,
     minWidth: 120,
-    maxWidth: 150
+    maxWidth: 150,
+    fontSize: "16px"
   },
   avatar: {
     flexGrow: 0
@@ -126,18 +128,13 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div>
-          <AppBar position="static" className={classes.AppBar}>
+          <AppBar position="sticky" className={classes.AppBar}>
             <Toolbar>
               <div className={classes.grow}>
                 <Typography variant="h4" color="inherit">
                   IMPERIUM
                 </Typography>
-
-                <Button
-                  variant="h4"
-                  color="inherit"
-                  className={classes.button}
-                >
+                <Button color="inherit" className={classes.button}>
                   Filtrar
                 </Button>
               </div>
@@ -154,10 +151,7 @@ export default withStyles(styles)(
                   }}
                 />
               </div>
-              <FormControl
-                variant="outlined"
-                className={classes.formControl}
-              >
+              <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel
                   ref={ref => {
                     this.InputLabelRef = ref;

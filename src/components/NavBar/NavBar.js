@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./NavBar.css";
 
-
 import AppBar from "../../molecules/AppBar/AppBar";
 
 export default class NavBar extends Component {
@@ -15,7 +14,7 @@ export default class NavBar extends Component {
     
     return (
       <div>
-        <AppBar/>
+        <AppBar />
       </div>
     );
   }
