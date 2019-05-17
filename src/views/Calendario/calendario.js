@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
+// Importar componentes 
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
+import Fullcalendar from '../../components/Fullcalendar/fullcalendar';
 
+// Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -44,7 +47,7 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div style={{ height: "100%" }}>
-         Soy un calendario
+         <Fullcalendar/>
         </div>
       );
     }
