@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Monitores.css";
 
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
@@ -36,7 +35,7 @@ const styles = theme => ({
 });
 
 export default withStyles(styles)(
-  class Monitores extends Component {
+  class Calendario extends Component {
     constructor(props) {
       super(props);
       this.state = {};
@@ -45,17 +44,9 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div style={{ height: "100%" }}>
-
-          Holas soy monitores
+         Soy un calendario
         </div>
       );
     }
   }
 );
-
-// <NavBar />
-//   <Grid container className={classes.LeftBar} spacing={16}>
-//     <Grid item xs={2} className={classes.LeftAppBar}>
-//       <LeftAppBar />
-//     </Grid>
-//   </Grid>

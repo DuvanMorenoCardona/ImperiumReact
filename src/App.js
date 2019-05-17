@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Loadable from "react-loadable";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter ,HashRouter, Route, Switch } from "react-router-dom";
 import * as firebase from "firebase";
 
 // Initialize Firebase
@@ -32,25 +32,30 @@ const Login = Loadable({
   loader: () => import("./views/Login/Login"),
   loading
 });
-const Monitores = Loadable({
-  loader: () => import("./views/Monitores/Monitores"),
+// const Monitores = Loadable({
+//   loader: () => import("./views/Monitores/Monitores"),
+//   loading
+// });
+
+const Home = Loadable({
+  loader: () => import("./views/home/home"),
   loading
 });
 
 class App extends Component {
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
           <Route exact path="/" name="Login - IMPERIUM" component={Login} />
           <Route
             exact
-            path="/monitores"
-            name="Monitores - IMPERIUM"
-            component={Monitores}
+            path="/Calendario"
+            name="Home - IMPERIUM"
+            component={Home}
           />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
