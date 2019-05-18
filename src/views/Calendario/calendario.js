@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import './calendario.css';
 
-// Importar componentes 
+// Importar componentes
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
-import Fullcalendar from '../../components/Fullcalendar/fullcalendar';
+import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
 
 // Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
@@ -46,8 +47,8 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div style={{ height: "100%" }}>
-         <Fullcalendar/>
+        <div className="content-calendar" style={{ height: "100%" }}>
+          <Fullcalendar />
         </div>
       );
     }
