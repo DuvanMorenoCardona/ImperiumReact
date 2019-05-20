@@ -10,6 +10,7 @@ export default class DemoApp extends React.Component {
   render() {
     return (
       <FullCalendar
+      className="dmc-FullCalendar"
         defaultView="dayGridMonth"
         dateClick={this.handleDateClick}
         plugins={[dayGridPlugin]}

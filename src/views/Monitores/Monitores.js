@@ -50,16 +50,8 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div style={{ height: "100%" }}>
-          <NavBar />
-          <Grid container className={classes.LeftBar} spacing={16}>
-            <Grid item xs={2} className={classes.LeftAppBar}>
-              <LeftAppBar />
-            </Grid>
-            <Grid item xs={10} className={classes.content}>
+        <div>
               <TableMonitores />
-            </Grid>
-          </Grid>
         </div>
       );
     }
