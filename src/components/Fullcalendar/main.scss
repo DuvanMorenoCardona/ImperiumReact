@@ -1,0 +1,34 @@
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+
+/* Variables globales */
+:root {
+    --Color-text : #DB0517;
+    --Color-btn : #090619;
+    --color-brand: #7101E7;
+    --color-brand-secondary: #BC028E;
+    --color-brand-third: #F90247;
+    --color-gradient: linear-gradient(to right, #7101E7, #BC028E, #F90247);
+}
+.fc-toolbar {
+    display: none;
+}
+
+.fc-day-top {
+    padding: 0 7.5% !important;
+}
+
+.fc-day-number {
+    font-size: .5em;
+    font-weight: bold;
+    
+}
+
+.fc-day-header {
+    color: var(--Color-text);
+    text-align: center;
+    font-size: .8em;
+    padding: .8em !important; 
+    border-style: none !important;
+    
+}

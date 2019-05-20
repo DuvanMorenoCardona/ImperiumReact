@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import "./Monitores.css";
+import './calendario.css';
 
+// Importar componentes
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
-import TableMonitores from "../../components/TableMonitores/TableMonitores";
+import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
 
+// Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -33,16 +35,11 @@ const styles = theme => ({
     height: "100%",
     padding: "0px !important",
     margin: "0px !important"
-  },
-  content: {
-    marginTop: "6em",
-    paddingLeft: "4em !important",
-    paddingRight: "1em !important"
   }
 });
 
 export default withStyles(styles)(
-  class Monitores extends Component {
+  class Calendario extends Component {
     constructor(props) {
       super(props);
       this.state = {};
@@ -50,25 +47,10 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div style={{ height: "100%" }}>
-          <NavBar />
-          <Grid container className={classes.LeftBar} spacing={16}>
-            <Grid item xs={2} className={classes.LeftAppBar}>
-              <LeftAppBar />
-            </Grid>
-            <Grid item xs={10} className={classes.content}>
-              <TableMonitores />
-            </Grid>
-          </Grid>
+        <div className="content-calendar" style={{ height: "100%" }}>
+          <Fullcalendar />
         </div>
       );
     }
   }
 );
-
-// <NavBar />
-//   <Grid container className={classes.LeftBar} spacing={16}>
-//     <Grid item xs={2} className={classes.LeftAppBar}>
-//       <LeftAppBar />
-//     </Grid>
-//   </Grid>

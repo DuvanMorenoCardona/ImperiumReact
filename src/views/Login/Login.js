@@ -22,7 +22,7 @@ export default class Login extends Component {
       .then(function(result) {
         console.log(result);
         if (result) {
-          me.props.history.push("/monitores");
+          me.props.history.push("/Calendario");
         }
       })
       .catch(function(error) {});
