@@ -30,7 +30,7 @@ const styles = theme => ({
     height: "100%",
     padding: "0px !important",
     position: "fixed",
-    marginTop:"72px"
+    marginTop:"70px"
   },
   primary: {
     fontSize: "25px"

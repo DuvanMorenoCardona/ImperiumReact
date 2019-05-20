@@ -4,6 +4,7 @@ import "./Monitores.css";
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
+import TableMonitores from "../../components/TableMonitores/TableMonitores";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -32,6 +33,11 @@ const styles = theme => ({
     height: "100%",
     padding: "0px !important",
     margin: "0px !important"
+  },
+  content: {
+    marginTop: "6em",
+    paddingLeft: "4em !important",
+    paddingRight: "1em !important"
   }
 });
 
@@ -49,6 +55,9 @@ export default withStyles(styles)(
           <Grid container className={classes.LeftBar} spacing={16}>
             <Grid item xs={2} className={classes.LeftAppBar}>
               <LeftAppBar />
+            </Grid>
+            <Grid item xs={10} className={classes.content}>
+              <TableMonitores />
             </Grid>
           </Grid>
         </div>
