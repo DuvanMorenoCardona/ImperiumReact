@@ -4,7 +4,7 @@ import "./TableRowContent.css";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Avatar from "@material-ui/core/Avatar";
-import ClearIcon from "@material-ui/icons/RemoveCircle";
+import ClearIcon from "@material-ui/icons/Delete";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -32,16 +32,18 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <TableRow key={this.props.row.id}>
+        <TableRow key={this.props.key}>
           <TableCell component="th" scope="row">
             <div className={classes.avatar}>
-              <Avatar>Du</Avatar>
-              <h5 className={classes.avatarText}>Duvan Moreno</h5>
+              <Avatar>{this.props.name[0] + this.props.name[1]}</Avatar>
+              <h5 className={classes.avatarText}>{this.props.name}</h5>
             </div>
           </TableCell>
-          <TableCell align="right">{this.props.row.calories}</TableCell>
-          <TableCell align="right">{this.props.row.fat}</TableCell>
-          <TableCell align="right"><ClearIcon/></TableCell>
+          <TableCell align="right">{this.props.carrera}</TableCell>
+          <TableCell align="right">{this.props.semestre}</TableCell>
+          <TableCell align="right">
+            <ClearIcon />
+          </TableCell>
         </TableRow>
       );
     }

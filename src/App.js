@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import "./App.css";
 import Loadable from "react-loadable";
-import { BrowserRouter ,HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import * as firebase from "firebase";
 
 // Initialize Firebase
 const config = {
-  apiKey: "AIzaSyDa6S5NWfO1VNrZi2kCA5fe53l9b9giKKo",
-    authDomain: "imperium-reacjs.firebaseapp.com",
-    databaseURL: "https://imperium-reacjs.firebaseio.com",
-    projectId: "imperium-reacjs",
-    storageBucket: "imperium-reacjs.appspot.com",
-    messagingSenderId: "942938556860",
-    appId: "1:942938556860:web:35cfde6a5afe96e3"
+  apiKey: "AIzaSyDL6EHnUwAbvMSlI4JbKOie_42iDUz80fk",
+  authDomain: "monitoresweb.firebaseapp.com",
+  databaseURL: "https://monitoresweb.firebaseio.com",
+  projectId: "monitoresweb",
+  storageBucket: "monitoresweb.appspot.com",
+  messagingSenderId: "360560978157",
+  appId: "1:360560978157:web:ad1f29159bb3bbf6"
 };
 firebase.initializeApp(config);
 

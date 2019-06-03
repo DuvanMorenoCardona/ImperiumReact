@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import "./Monitores.css";
 
-import NavBar from "../../components/NavBar/NavBar";
-import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
-import Grid from "@material-ui/core/Grid";
 import TableMonitores from "../../components/TableMonitores/TableMonitores";
 
 import { withStyles } from "@material-ui/core/styles";
+
+import firebase from "firebase";
 
 const styles = theme => ({
   root: {
@@ -45,13 +44,33 @@ export default withStyles(styles)(
   class Monitores extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+        users: {}
+      };
     }
+
+    componentWillMount() {
+      const attemptCard = firebase
+        .database()
+        .ref()
+        .child("Monitor");
+      attemptCard.on("value", snapshot => {
+        this.setState({
+          users: snapshot.val()
+        });
+      });
+
+      /*  const socket = socketIOClient("http://localhost:8090");
+      socket.emit("inicio");
+        socket.on("entrar", data => {
+        console.log(data);
+      }); */
+    }
+
     render() {
-      const { classes } = this.props;
       return (
         <div>
-              <TableMonitores />
+          <TableMonitores users={this.state.users}/>
         </div>
       );
     }
