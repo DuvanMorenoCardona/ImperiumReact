@@ -1,4 +1,23 @@
+:root {
+  --Color-text: #db0517;
+  --Color-btn: #090619;
+  --color-brand: #7101e7;
+  --color-brand-secondary: #bc028e;
+  --color-brand-third: #f90247;
+  --Color-text2:rgb(255, 255, 255);
+  --color-gradient: linear-gradient(to right, #7101e7, #bc028e, #f90247);
+}
+
 .content-calendar {
-    height: auto;
-    width: 80%;
+  height: auto;
+  width: 80%;
+}
+
+.btn-addevent {
+    
+    background-color: var(--Color-text) !important;
+    bottom: 1em;
+    color: var(--Color-text2) !important;
+    left: 70vw;
+    position: "absolute";
 }
