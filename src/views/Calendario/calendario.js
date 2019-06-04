@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import './calendario.css';
+import "./calendario.css";
 
 // Importar componentes
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
 import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
+import ButtonFloat from "../../molecules/ButtonFloat/ButtonFloat";
 
 // Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
+
+// Importar componentes externos
+import firebase from "firebase";
 
 const styles = theme => ({
   root: {
@@ -42,13 +46,32 @@ export default withStyles(styles)(
   class Calendario extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+        Events: {}
+      };
     }
+
+    componentWillMount() {
+      const EventsFirebase = firebase
+        .database()
+        .ref()
+        .child("Evento");
+      var me = this;
+      EventsFirebase.on("value", snapshot => {
+        // console.log(snapshot.val());
+        me.setState({
+          Events: snapshot.val()
+        });
+      });
+      console.log(this.state.Events);
+    }
+
     render() {
       const { classes } = this.props;
       return (
         <div className="content-calendar" style={{ height: "100%" }}>
           <Fullcalendar />
+          <ButtonFloat  text="Evento" />
         </div>
       );
     }
