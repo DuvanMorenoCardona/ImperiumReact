@@ -5,6 +5,10 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Avatar from "@material-ui/core/Avatar";
 import ClearIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+
+
+
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -28,6 +32,9 @@ export default withStyles(styles)(
     handleClick() {
       this.props.login();
     }
+    editMonitor() {
+      
+    }
 
     render() {
       const { classes } = this.props;
@@ -43,8 +50,10 @@ export default withStyles(styles)(
           <TableCell align="right">{this.props.semestre}</TableCell>
           <TableCell align="right">
             <ClearIcon />
+            <EditIcon />
           </TableCell>
         </TableRow>
+        
       );
     }
   }

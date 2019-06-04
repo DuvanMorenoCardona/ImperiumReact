@@ -9,6 +9,9 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import TableRowContent from "../../molecules/TableRowContent/TableRowContent";
 
+import Modal from "@material-ui/core/Modal";
+import Typography from "@material-ui/core/Typography";
+
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
@@ -77,13 +80,22 @@ export default withStyles(styles)(
                   <TableCell className={classes.tableHeadText}>
                     Nombre
                   </TableCell>
-                  <TableCell align="right" className={classes.tableHeadText}>
+                  <TableCell
+                    align="right"
+                    className={classes.tableHeadText}
+                  >
                     Carrera
                   </TableCell>
-                  <TableCell align="right" className={classes.tableHeadText}>
+                  <TableCell
+                    align="right"
+                    className={classes.tableHeadText}
+                  >
                     Semestre
                   </TableCell>
-                  <TableCell align="right" className={classes.tableHeadText}>
+                  <TableCell
+                    align="right"
+                    className={classes.tableHeadText}
+                  >
                     Elimina o editar
                   </TableCell>
                 </TableRow>
@@ -93,7 +105,7 @@ export default withStyles(styles)(
                   return (
                     <TableRowContent
                       name={
-                        this.props.users[key].nombre +
+                        this.props.users[key].nombre +" "+
                         this.props.users[key].apellido
                       }
                       carrera={this.props.users[key].carrera}
@@ -115,6 +127,7 @@ export default withStyles(styles)(
               </TableBody>
             </Table>
           </Paper>
+          
         </div>
       );
     }
