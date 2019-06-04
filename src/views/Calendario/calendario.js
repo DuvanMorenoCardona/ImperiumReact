@@ -6,14 +6,10 @@ import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Grid from "@material-ui/core/Grid";
 import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
+import ButtonFloat from "../../molecules/ButtonFloat/ButtonFloat";
 
 // Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
-import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
-import Icon from "@material-ui/core/Icon";
-import DeleteIcon from "@material-ui/icons/Delete";
-import NavigationIcon from "@material-ui/icons/Navigation";
 
 // Importar componentes externos
 import firebase from "firebase";
@@ -75,14 +71,7 @@ export default withStyles(styles)(
       return (
         <div className="content-calendar" style={{ height: "100%" }}>
           <Fullcalendar />
-          <Fab
-            variant="extended"
-            className="btn-addevent"
-            aria-label="add "
-          >
-            <AddIcon />
-            Evento
-          </Fab>
+          <ButtonFloat  text="Evento" />
         </div>
       );
     }
