@@ -105,12 +105,16 @@ export default withStyles(styles)(
                   return (
                     <TableRowContent
                       name={
-                        this.props.users[key].nombre +" "+
+                        this.props.users[key].nombre +
+                        " " +
                         this.props.users[key].apellido
                       }
                       carrera={this.props.users[key].carrera}
-                      semestre={this.props.users[key].semestre}
+                      semestre={
+                        this.props.users[key].semestre
+                      }
                       key={i}
+                      thisUser={this.props.users[key]}
                     />
                   );
                 })}

@@ -9,8 +9,15 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Typography from "@material-ui/core/Typography";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Fab from "@material-ui/core/Fab";
+import NavigationIcon from "@material-ui/icons/Add";
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
 
 import firebase from "firebase";
 
@@ -56,6 +63,26 @@ const styles = theme => ({
     width: "45%",
     marginLeft: "2em",
     color: "red"
+  },
+  textHorario: {
+    width: "100%",
+    borderBottom: "1px solid #3f51b5"
+  },
+  formControl: {
+    margin: "1em",
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: "2em"
+  },
+  fab: {
+    margin: "1em",
+    position: "fixed",
+    bottom: "1em",
+    right: "1em"
+  },
+  extendedIcon: {
+    marginRight: "1em"
   }
 });
 
@@ -65,7 +92,7 @@ export default withStyles(styles)(
       super(props);
       this.state = {
         users: {},
-        open: true,
+        open: false,
         name: "",
         lastName: "",
         email: "",
@@ -74,7 +101,8 @@ export default withStyles(styles)(
         program: "",
         cedula: "",
         celPhone: "",
-        codeStudent: ""
+        codeStudent: "",
+        date: ""
       };
       this.handleClickOpen = this.handleClickOpen.bind(this);
       this.handleClose = this.handleClose.bind(this);
@@ -89,6 +117,7 @@ export default withStyles(styles)(
       this.celPhone = React.createRef();
       this.program = React.createRef();
       this.codeStudent = React.createRef();
+      this.semestre = React.createRef();
 
       this.handleSendDatabase = this.handleSendDatabase.bind(this);
       this.handleInputChange = this.handleInputChange.bind(this);
@@ -126,11 +155,13 @@ export default withStyles(styles)(
         .set({
           nombre: this.state.name,
           apellido: this.state.lastName,
-          carreo: this.state.email,
+          correo: this.state.email,
           cedula: this.state.cedula,
           carrera: this.state.program,
           celular: this.state.celPhone,
-          fechaNacimiento: this.state.dateAge
+          fechaNacimiento: this.state.dateAge,
+          semestre: this.state.semestre,
+          codigo: this.state.codeStudent
         });
       this.setState({
         open: false
@@ -257,14 +288,55 @@ export default withStyles(styles)(
               <TextField
                 autoFocus
                 margin="dense"
+                ref={this.semestre}
+                name="semestre"
+                value={this.state.semestre}
+                label="semestre"
+                type="text"
+                className={classes.textName}
+                onChange={this.handleInputChange}
+              />
+              <TextField
+                autoFocus
+                margin="dense"
                 ref={this.codeStudent}
                 name="codeStudent"
                 value={this.state.codeStudent}
                 label="Codigo estudiantil"
                 type="text"
-                className={classes.textCedula}
+                className={classes.textApellido}
                 onChange={this.handleInputChange}
               />
+              <Typography
+                variant="subtitle1"
+                component="h2"
+                color="primary"
+                margin="dense"
+                className={classes.textHorario}
+              >
+                Horario
+              </Typography>
+              <FormControl className={classes.formControl}>
+                <InputLabel htmlFor="age-simple">Day</InputLabel>
+                <Select
+                  value={this.state.date}
+                  onChange={this.handleChange}
+                  inputProps={{
+                    name: "age",
+                    id: "age-simple"
+                  }}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={"Lunes"}>Lunes</MenuItem>
+                  <MenuItem value={"Martes"}>Martes</MenuItem>
+                  <MenuItem value={"Miercoles"}>Miércoles</MenuItem>
+                  <MenuItem value={"Jueves"}>Jueves</MenuItem>
+                  <MenuItem value={"Viernes"}>Viernes</MenuItem>
+                  <MenuItem value={"Sabado"}>Sabado</MenuItem>
+                </Select>
+              </FormControl>
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
@@ -275,15 +347,17 @@ export default withStyles(styles)(
               </Button>
             </DialogActions>
           </Dialog>
+          <Fab
+            variant="extended"
+            aria-label="Delete"
+            className={classes.fab}
+            onClick={this.handleClickOpen}
+          >
+            <NavigationIcon className={classes.extendedIcon} />
+            Monitor
+          </Fab>
         </div>
       );
     }
   }
 );
-
-// <NavBar />
-//   <Grid container className={classes.LeftBar} spacing={16}>
-//     <Grid item xs={2} className={classes.LeftAppBar}>
-//       <LeftAppBar />
-//     </Grid>
-//   </Grid>
