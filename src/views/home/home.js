@@ -55,9 +55,10 @@ export default withStyles(styles)(
           <div style={{ height: "100%" }}>
             <NavBar />
             <Grid container className={classes.LeftBar} spacing={16}>
-              <Grid item xs={2} className={classes.LeftAppBar}>
+              <Grid item xs={3} className={classes.LeftAppBar}>
                 <LeftAppBar />
               </Grid>
+              <Grid>
                 <Switch>
                   <Route
                     exact
@@ -66,6 +67,7 @@ export default withStyles(styles)(
                   />
                   <Route path="/Monitores" render={() => <Monitores />} />
                 </Switch>
+              </Grid>
             </Grid>
           </div>
         </BrowserRouter>
