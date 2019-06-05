@@ -42,7 +42,7 @@ const styles = theme => ({
   },
   textCedula: {
     width: "60%",
-    color: "#DB0517 !important"
+    color: "#b71c1c !important"
   },
   textApellido: {
     width: "45%",
@@ -51,7 +51,8 @@ const styles = theme => ({
   },
   textHorario: {
     width: "100%",
-    borderBottom: "1px solid #3f51b5"
+    borderBottom: "1px solid #b71c1c",
+    color: "#b71c1c"
   },
   formControl: {
     margin: "1em",
@@ -105,36 +106,44 @@ export default withStyles(styles)(
         open: false
       });
     }
-    
+
     handleDelete() {
-      console.log("gg");
-      firebase
-        .database()
-        .ref("Monitor/" + this.state.cedula)
-        .remove()
-        .then(function() {
-          console.log("Remove succeeded.");
-        })
-        .catch(function(error) {
-          console.log("Remove failed: " + error.message);
-        });;
+      let r = window.confirm(
+        "Seguro de que desea eliminar a " + this.props.thisUser.nombre
+      );
+
+      if (r === true) {
+        alert("Se elimino a " + this.props.thisUser.nombre);
+        firebase
+          .database()
+          .ref("Monitor/" + this.props.thisUser.cedula)
+          .remove()
+          .then(function() {
+            console.log("Remove succeeded.");
+          })
+          .catch(function(error) {
+            console.log("Remove failed: " + error.message);
+          });
+      } else {
+        alert("No se elimino a " + this.props.thisUser.nombre);
+      }
     }
-    
+
     handleSendDatabase() {
-      console.log(this.state.cedula);
+      console.log(this.props.thisUser.cedula);
       firebase
         .database()
-        .ref("Monitor/" + this.state.cedula)
+        .ref("Monitor/" + this.props.thisUser.cedula)
         .set({
-          nombre: this.state.name,
-          apellido: this.state.lastName,
-          correo: this.state.email,
-          cedula: this.state.cedula,
-          carrera: this.state.program,
-          celular: this.state.celPhone,
-          fechaNacimiento: this.state.dateAge,
-          semestre: this.state.semestre,
-          codigo:this.state.codeStudent
+          nombre: this.props.thisUser.nombre,
+          apellido: this.props.thisUser.apellido,
+          correo: this.props.thisUser.correo,
+          cedula: this.props.thisUser.cedula,
+          carrera: this.props.thisUser.carrera,
+          celular: this.props.thisUser.celular,
+          fechaNacimiento: this.props.thisUser.fechaNacimiento,
+          semestre: this.props.thisUser.semestre,
+          codigo: this.props.thisUser.codigo
         });
       this.setState({
         open: false

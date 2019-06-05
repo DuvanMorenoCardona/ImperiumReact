@@ -57,16 +57,17 @@ const styles = theme => ({
   },
   textCedula: {
     width: "60%",
-    color: "#DB0517 !important"
+    color: "#b71c1c !important"
   },
   textApellido: {
     width: "45%",
     marginLeft: "2em",
-    color: "red"
+    color: "#b71c1c"
   },
   textHorario: {
     width: "100%",
-    borderBottom: "1px solid #3f51b5"
+    borderBottom: "1px solid #b71c1c",
+    color:"#b71c1c"
   },
   formControl: {
     margin: "1em",
@@ -152,7 +153,7 @@ export default withStyles(styles)(
       firebase
         .database()
         .ref("Monitor/" + this.state.cedula)
-        .set({
+        .update({
           nombre: this.state.name,
           apellido: this.state.lastName,
           correo: this.state.email,
@@ -161,7 +162,8 @@ export default withStyles(styles)(
           celular: this.state.celPhone,
           fechaNacimiento: this.state.dateAge,
           semestre: this.state.semestre,
-          codigo: this.state.codeStudent
+          codigo: this.state.codeStudent,
+          horario:this.state.date
         });
       this.setState({
         open: false
@@ -177,6 +179,10 @@ export default withStyles(styles)(
         [name]: value
       });
     }
+
+    handleChange = name => event => {
+      this.setState({ [name]: event.target.value });
+    };
 
     render() {
       const { classes } = this.props;
@@ -197,6 +203,14 @@ export default withStyles(styles)(
               Editar Contacto Monitor
             </DialogTitle>
             <DialogContent>
+              <Typography
+                variant="subtitle1"
+                component="h2"
+                margin="dense"
+                className={classes.textHorario}
+              >
+                Datos personales
+              </Typography>
               <TextField
                 autoFocus
                 margin="dense"
@@ -310,19 +324,18 @@ export default withStyles(styles)(
               <Typography
                 variant="subtitle1"
                 component="h2"
-                color="primary"
                 margin="dense"
                 className={classes.textHorario}
               >
                 Horario
               </Typography>
               <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-simple">Day</InputLabel>
+                <InputLabel htmlFor="age-simple">Dia</InputLabel>
                 <Select
                   value={this.state.date}
-                  onChange={this.handleChange}
+                  onChange={this.handleChange("date")}
                   inputProps={{
-                    name: "age",
+                    name: "date",
                     id: "age-simple"
                   }}
                 >
