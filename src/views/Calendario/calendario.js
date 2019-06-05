@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./calendario.css";
 
 // Importar componentes
+import ButtonFloat from "../../molecules/ButtonFloat/ButtonFloat";
+import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
+import Grid from "@material-ui/core/Grid";
 import NavBar from "../../components/NavBar/NavBar";
 import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
-import Grid from "@material-ui/core/Grid";
-import Fullcalendar from "../../components/Fullcalendar/fullcalendar";
-import ButtonFloat from "../../molecules/ButtonFloat/ButtonFloat";
+import Model from "../../components/Model/Model";
 
 // Importar componentes de Material-ui
 import { withStyles } from "@material-ui/core/styles";
