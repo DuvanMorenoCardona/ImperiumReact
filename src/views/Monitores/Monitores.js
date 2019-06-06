@@ -80,6 +80,9 @@ const styles = theme => ({
     bottom: "1em",
     right: "1em",
     background: "#DB0517",
+    "&:hover": {
+      background: "#b71c1c"
+    },
     color: "white"
   },
   extendedIcon: {
@@ -103,7 +106,7 @@ export default withStyles(styles)(
         cedula: "",
         celPhone: "",
         codeStudent: "",
-        date: [{ dia: 0, horaI: 0, horaF: 0 }]
+        date: [{ week: "", hourI: "00:00", hourF: "00:00" }]
       };
       this.handleClickOpen = this.handleClickOpen.bind(this);
       this.handleClose = this.handleClose.bind(this);
@@ -123,6 +126,7 @@ export default withStyles(styles)(
       this.addH = this.addH.bind(this);
       this.handleSendDatabase = this.handleSendDatabase.bind(this);
       this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleHorarioMonitores = this.handleHorarioMonitores.bind(this);
     }
 
     componentWillMount() {
@@ -186,9 +190,24 @@ export default withStyles(styles)(
       this.setState({ [name]: event.target.value });
     };
 
+    handleHorarioMonitores(data, i,name) {
+      let aux = this.state.date;
+      if (name == "week") {
+        aux[i].week = data;
+      } else if (name == "hourI") {
+        aux[i].hourI = data;
+      } else {
+        aux[i].hourF = data;
+      }
+      
+      this.setState({
+        date: aux
+      },()=>{console.log(this.state.date);});
+    }
+
     addH() {
       let aux = this.state.date;
-      aux.push({ dia: 0, horaI: 0, horaF: 0 });
+      aux.push({ week: "", hourI: "00:00", hourF: "00:00" });
       this.setState({
         date: aux
       });
@@ -343,11 +362,12 @@ export default withStyles(styles)(
               {this.state.date.map((key, i) => {
                 return (
                   <HorarioMonitores
+                    handleHorarioMonitoresFunt={this.handleHorarioMonitores}
                     key={i}
                     keyH={i}
-                    dia={key.dia}
-                    horaI={key.horaI}
-                    horaF={key.horaF}
+                    week={key.week}
+                    hourI={key.hourI}
+                    hourF={key.hourF}
                   />
                 );
               })}

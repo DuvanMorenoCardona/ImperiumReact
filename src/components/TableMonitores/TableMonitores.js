@@ -38,7 +38,7 @@ const styles = theme => ({
     cursor: "initial"
   },
   tableHead: {
-    backgroundColor: "#b1b1b1"
+    backgroundColor: "#b71c1c"
   },
   tableHeadText: {
     color: "white"

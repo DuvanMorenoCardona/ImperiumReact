@@ -23,6 +23,8 @@ import { withStyles } from "@material-ui/core/styles";
 const styles = theme => ({
   avatar: {
     display: "flex"
+  }, avataricon: {
+    
   },
   avatarText: {
     marginLeft: "1em"
@@ -178,7 +180,9 @@ export default withStyles(styles)(
         <TableRow key={this.props.key}>
           <TableCell component="th" scope="row">
             <div className={classes.avatar}>
-              <Avatar>{this.props.name[0] + this.props.name[1]}</Avatar>
+              <Avatar className={classes.avataricon}>
+                {this.props.name[0] + this.props.name[1]}
+              </Avatar>
               <h5 className={classes.avatarText}>{this.props.name}</h5>
             </div>
           </TableCell>

@@ -86,6 +86,18 @@ export default withStyles(styles)(
         date: ""
       };
       this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleHourMonitors = this.handleHourMonitors.bind(this);
+    }
+
+    handleHourMonitors(event) {
+      const target = event.target;
+      const name = target.name;
+      console.log(this.props.keyH);
+      this.props.handleHorarioMonitoresFunt(
+        target.value,
+        this.props.keyH,
+        name
+      );
     }
 
     handleInputChange(event) {
@@ -99,7 +111,7 @@ export default withStyles(styles)(
     }
 
     componentWillMount() {
-      console.log(this.props.keyH)
+      console.log(this.props.keyH);
     }
     render() {
       const { classes } = this.props;
@@ -108,10 +120,10 @@ export default withStyles(styles)(
           <FormControl className={classes.formControl}>
             <InputLabel htmlFor="age-simple">Dia</InputLabel>
             <Select
-              value={this.state.date}
-              onChange={this.handleInputChange}
+              value={this.props.week}
+              onChange={this.handleHourMonitors}
               inputProps={{
-                name: "date",
+                name: "week",
                 id: "age-simple"
               }}
             >
@@ -129,22 +141,22 @@ export default withStyles(styles)(
           <TextField
             autoFocus
             margin="dense"
-            name="horarioI"
-            value={this.state.horarioI}
+            name="hourI"
+            value={this.props.hourI}
             label="Hora Inicio"
             type="time"
             className={classes.textHorarioI}
-            onChange={this.handleInputChange}
+            onChange={this.handleHourMonitors}
           />
           <TextField
             autoFocus
             margin="dense"
-            name="horarioF"
-            value={this.state.horarioF}
+            name="hourF"
+            value={this.props.hourF}
             label="Hora Fin"
             type="time"
             className={classes.textHorarioI}
-            onChange={this.handleInputChange}
+            onChange={this.handleHourMonitors}
           />
         </div>
       );
