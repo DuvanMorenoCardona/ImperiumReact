@@ -22,24 +22,6 @@ const styles = theme => ({
     margin: 0,
     width: "100% !important",
     height: "100%"
-  },
-  LeftBar: {
-    flexGrow: 0,
-    padding: 0,
-    margin: 0,
-    height: "100%"
-  },
-  paper: {
-    height: 140,
-    width: 100
-  },
-  control: {
-    padding: theme.spacing.unit * 2
-  },
-  LeftAppBar: {
-    height: "100%",
-    padding: "0px !important",
-    margin: "0px !important"
   }
 });
 
@@ -70,7 +52,7 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div className="content-calendar" style={{ height: "100%" }}>
+        <div>
           <Fullcalendar />
           <ButtonFloat  text="Evento" />
         </div>

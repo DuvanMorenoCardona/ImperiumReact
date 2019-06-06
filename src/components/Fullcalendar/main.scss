@@ -10,25 +10,28 @@
     --color-brand-third: #F90247;
     --color-gradient: linear-gradient(to right, #7101E7, #BC028E, #F90247);
 }
-.fc-toolbar {
-    display: none;
-}
 
-.fc-day-top {
-    padding: 0 7.5% !important;
-}
 
-.fc-day-number {
-    font-size: .5em;
-    font-weight: bold;
+
+// .fc-toolbar {
+//     display: none;
+// }
+
+// .fc-day-top {
+//     padding: 0 7.5% !important;
+// }
+
+// .fc-day-number {
+//     font-size: .5em;
+//     font-weight: bold;
     
-}
+// }
 
-.fc-day-header {
-    color: var(--Color-text);
-    text-align: center;
-    font-size: .8em;
-    padding: .8em !important; 
-    border-style: none !important;
+// .fc-day-header {
+//     color: var(--Color-text);
+//     text-align: center;
+//     font-size: .8em;
+//     padding: .8em !important; 
+//     border-style: none !important;
     
-}
+// }

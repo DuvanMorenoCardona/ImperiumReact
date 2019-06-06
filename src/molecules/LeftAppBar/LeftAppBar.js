@@ -26,7 +26,7 @@ const styles = theme => ({
     height: "6em"
   },
   paper: {
-    height: "100%",
+    height: "100% !important",
     padding: "0px !important"
   },
   primary: {

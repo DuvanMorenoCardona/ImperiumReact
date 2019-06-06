@@ -36,7 +36,8 @@ const styles = theme => ({
   AppBar: {
     backgroundColor: "#b71c1c",
     top: 0,
-    bottom: "auto"
+    bottom: "auto",
+    height: "5% !important",
   },
   search: {
     position: "relative",
@@ -129,7 +130,7 @@ export default withStyles(styles)(
       const open = Boolean(anchorEl);
       const { classes } = this.props;
       return (
-        <div>
+        
           <AppBar position="relative" className={classes.AppBar}>
             <Toolbar>
               <div className={classes.grow}>
@@ -216,7 +217,6 @@ export default withStyles(styles)(
               )}
             </Toolbar>
           </AppBar>
-        </div>
       );
     }
   }

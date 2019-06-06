@@ -15,29 +15,12 @@ import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 
 const styles = theme => ({
   root: {
-    flexGrow: 1,
-    padding: 0,
-    margin: 0,
-    width: "100% !important",
-    height: "100%"
-  },
-  LeftBar: {
-    flexGrow: 0,
-    padding: 0,
-    margin: 0,
-    height: "100%"
-  },
-  paper: {
-    height: 140,
-    width: 100
-  },
-  control: {
-    padding: theme.spacing.unit * 2
-  },
-  LeftAppBar: {
-    height: "100%",
-    padding: "0px !important",
-    margin: "0px !important"
+    height: "100vh !important",
+    width: "100vw !important"
+  }, 
+  content: {
+    height: "95% !important",
+    width: "100% !important"
   }
 });
 
@@ -51,32 +34,27 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <BrowserRouter>
-          <Grid container spacing={12}>
-            <Grid item lg={12} md={12} sm={12} xs={12}>
-              <NavBar />
+          <div className={classes.root}>
+            <NavBar />
+            <Grid container spacing={12} className={classes.content}>
+              <Grid item lg={2} md={3} sm={3} xs={3}>
+                <LeftAppBar />
+              </Grid>
+              <Grid item row lg={10} md={3} sm={3} xs={3}>
+                <Switch>
+                  <Route
+                    exact
+                    path="/Calendario"
+                    render={() => <Calendario />}
+                  />
+                  <Route path="/Monitores" render={() => <Monitores />} />
+                </Switch>
+              </Grid>
             </Grid>
-          </Grid>
-          
-          <Grid container className={classes.LeftBar} spacing={12}>
-            <Grid
-              item
-              lg={3}
-              md={3}
-              sm={3}
-              xs={3}
-              className={classes.LeftAppBar}
-            >
-              <LeftAppBar />
-            </Grid>
-            <Grid item lg={9} md={9} sm={9} xs={9}>
-              <Switch>
-                <Route exact path="/Calendario" render={() => <Calendario />} />
-                <Route path="/Monitores" render={() => <Monitores />} />
-              </Switch>
-            </Grid>
-          </Grid>
+          </div>
         </BrowserRouter>
       );
     }
   }
 );
+

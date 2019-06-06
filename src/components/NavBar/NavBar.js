@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./NavBar.css";
 
 import AppBar from "../../molecules/AppBar/AppBar";
 

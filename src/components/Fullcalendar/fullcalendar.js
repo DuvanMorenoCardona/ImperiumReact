@@ -2,6 +2,8 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 
+import timeGridPlugin from "@fullcalendar/timegrid";
+
 import "./main.scss"; // webpack must be configured to do this
 
 // Importar material UI
@@ -86,12 +88,10 @@ export default class DemoApp extends React.Component {
     const attemptEvents = firebase
       .database()
       .ref()
-      .child("Evento/"+ info.event.title);
+      .child("Evento/" + info.event.title);
 
-      
     // Se realiza un snapshot a la base de datos
     attemptEvents.on("value", snapshot => {
-
       this.setState({
         nameEvent: snapshot.key,
         dependence: snapshot.val().dependecia,
@@ -107,7 +107,6 @@ export default class DemoApp extends React.Component {
         open: true
       });
     });
-
 
     // this.setState({
     //   open: true
@@ -163,7 +162,12 @@ export default class DemoApp extends React.Component {
           className="dmc-FullCalendar"
           defaultView="dayGridMonth"
           dateClick={this.handleDateClick}
-          plugins={[dayGridPlugin]}
+          plugins={[dayGridPlugin, timeGridPlugin]}
+          header={{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          }}
           events={this.state.events}
           eventClick={this.eventClick}
         />
@@ -288,10 +292,6 @@ export default class DemoApp extends React.Component {
       </div>
     );
   }
-  handleDateClick = arg => {
-    // bind with an arrow function
-    alert(arg.dateStr);
-  };
 
   someMethod() {
     let calendarApi = this.calendarRef.current.getApi();
