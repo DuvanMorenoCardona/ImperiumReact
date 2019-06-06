@@ -19,11 +19,86 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import NavigationIcon from "@material-ui/icons/Add";
+import { withStyles } from "@material-ui/core/styles";
 
 // importar componentes externos
 import firebase from "firebase";
 
-export default class ButtonFloat extends Component {
+//se crean los estilos
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    padding: 0,
+    margin: 0,
+    width: "100% !important",
+    height: "100%"
+  },
+  LeftBar: {
+    flexGrow: 0,
+    padding: 0,
+    margin: 0,
+    height: "100%"
+  },
+  paper: {
+    height: 140,
+    width: 100
+  },
+  control: {
+    padding: theme.spacing.unit * 2
+  },
+  LeftAppBar: {
+    height: "100%",
+    padding: "0px !important",
+    margin: "0px !important"
+  },
+  content: {
+    marginTop: "6em",
+    paddingLeft: "4em !important",
+    paddingRight: "1em !important"
+  },
+  textName: {
+    width: "50% !important"
+  },
+  textCedula: {
+    width: "60%",
+    color: "#b71c1c !important"
+  },
+  textApellido: {
+    width: "45%",
+    marginLeft: "2em",
+    color: "#b71c1c"
+  },
+  textHorario: {
+    width: "100%",
+    borderBottom: "1px solid #b71c1c",
+    color: "#b71c1c",
+    display: "flex",
+    justifyContent:"space-between"
+  },
+  formControl: {
+    margin: "1em",
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: "2em"
+  },
+  fab: {
+    margin: "1em",
+    position: "fixed",
+    bottom: "1em",
+    right: "1em",
+    background: "#DB0517",
+    "&:hover": {
+      background: "#b71c1c"
+    },
+    color: "white"
+  },
+  extendedIcon: {
+    marginRight: "0em"
+  }
+});
+
+export default withStyles(styles) (class ButtonFloat extends Component {
   constructor(props) {
     super(props);
 
@@ -83,7 +158,8 @@ export default class ButtonFloat extends Component {
         fechaFinEvento: this.state.date2,
         horaInicio: this.state.hour1,
         horaFin: this.state.hour2,
-        observaciones: this.state.observation
+        observaciones: this.state.observation,
+        cantidadMonitores:this.state.monitors
       });
     console.log("Enviado");
 
@@ -103,6 +179,7 @@ export default class ButtonFloat extends Component {
   }
 
   render() {
+     const { classes } = this.props;
     return (
       <div>
         <Fab
@@ -125,6 +202,7 @@ export default class ButtonFloat extends Component {
               autoFocus
               margin="dense"
               name="nameEvent"
+              clasName={classes.textName}
               value={this.state.nameEvent}
               label="Nombre de Evento"
               type="text"
@@ -135,6 +213,7 @@ export default class ButtonFloat extends Component {
               margin="dense"
               name="dependence"
               label="Dependecia"
+              clasName={classes.textName}
               value={this.state.dependence}
               onChange={this.handleInputChange}
               type="text"
@@ -143,6 +222,7 @@ export default class ButtonFloat extends Component {
               autoFocus
               margin="dense"
               name="nameCharge"
+              clasName={classes.textName}
               value={this.state.nameCharge}
               onChange={this.handleInputChange}
               label="Encargado del Evento"
@@ -234,4 +314,4 @@ export default class ButtonFloat extends Component {
       </div>
     );
   }
-}
+})

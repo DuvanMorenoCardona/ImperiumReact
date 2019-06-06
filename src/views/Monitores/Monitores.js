@@ -65,7 +65,9 @@ const styles = theme => ({
   textHorario: {
     width: "100%",
     borderBottom: "1px solid #b71c1c",
-    color: "#b71c1c"
+    color: "#b71c1c",
+    display: "flex",
+    justifyContent:"space-between"
   },
   formControl: {
     margin: "1em",
@@ -358,12 +360,19 @@ export default withStyles(styles)(
                 className={classes.textHorario}
               >
                 Horario
+                <NavigationIcon
+                  onClick={this.addH}
+                  className={classes.extendedIcon}
+                />
+                {/* <p onClick={this.addH}>+</p> */}
               </Typography>
-              <p onClick={this.addH}>+</p>
+
               {this.state.date.map((key, i) => {
                 return (
                   <HorarioMonitores
-                    handleHorarioMonitoresFunt={this.handleHorarioMonitores}
+                    handleHorarioMonitoresFunt={
+                      this.handleHorarioMonitores
+                    }
                     key={i}
                     keyH={i}
                     week={key.week}

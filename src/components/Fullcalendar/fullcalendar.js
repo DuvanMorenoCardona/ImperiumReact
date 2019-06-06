@@ -68,8 +68,8 @@ export default class DemoApp extends React.Component {
         let data = event.val();
         let jsonEven = {
           title: event.key,
-          start: data.fechaInicioEvento + data.horaInicio,
-          end: data.fechaFinEvento + data.horaFin
+          start: data.fechaInicioEvento + "T" + data.horaInicio,
+          end: data.fechaFinEvento + "T" + data.horaFin
         };
         auxEvents.push(jsonEven);
       });
@@ -95,12 +95,13 @@ export default class DemoApp extends React.Component {
         nameCharge: snapshot.val().encargado.nombre,
         extent: snapshot.val().encargado.extension,
         cost: snapshot.val().centroDeCostos,
-        rubro: snapshot.val().rubre,
+        rubro: snapshot.val().rubro,
         date1: snapshot.val().fechaInicioEvento,
         date2: snapshot.val().fechaFinEvento,
         observation: snapshot.val().observaciones,
         hour1: snapshot.val().horaInicio,
         hour2: snapshot.val().horaFin,
+        monitors:snapshot.val().cantidadMonitores,
         open: true
       });
     });
