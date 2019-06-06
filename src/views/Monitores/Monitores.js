@@ -10,14 +10,12 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Typography from "@material-ui/core/Typography";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import Fab from "@material-ui/core/Fab";
 import NavigationIcon from "@material-ui/icons/Add";
 
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import HorarioMonitores from "../../molecules/HorarioMonitores/HorarioMonitores";
+
+import { withStyles } from "@material-ui/core/styles";
 
 import firebase from "firebase";
 
@@ -67,7 +65,7 @@ const styles = theme => ({
   textHorario: {
     width: "100%",
     borderBottom: "1px solid #b71c1c",
-    color:"#b71c1c"
+    color: "#b71c1c"
   },
   formControl: {
     margin: "1em",
@@ -80,10 +78,12 @@ const styles = theme => ({
     margin: "1em",
     position: "fixed",
     bottom: "1em",
-    right: "1em"
+    right: "1em",
+    background: "#DB0517",
+    color: "white"
   },
   extendedIcon: {
-    marginRight: "1em"
+    marginRight: "0em"
   }
 });
 
@@ -103,7 +103,7 @@ export default withStyles(styles)(
         cedula: "",
         celPhone: "",
         codeStudent: "",
-        date: ""
+        date: [{ dia: 0, horaI: 0, horaF: 0 }]
       };
       this.handleClickOpen = this.handleClickOpen.bind(this);
       this.handleClose = this.handleClose.bind(this);
@@ -120,6 +120,7 @@ export default withStyles(styles)(
       this.codeStudent = React.createRef();
       this.semestre = React.createRef();
 
+      this.addH = this.addH.bind(this);
       this.handleSendDatabase = this.handleSendDatabase.bind(this);
       this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -153,7 +154,7 @@ export default withStyles(styles)(
       firebase
         .database()
         .ref("Monitor/" + this.state.cedula)
-        .update({
+        .set({
           nombre: this.state.name,
           apellido: this.state.lastName,
           correo: this.state.email,
@@ -163,7 +164,8 @@ export default withStyles(styles)(
           fechaNacimiento: this.state.dateAge,
           semestre: this.state.semestre,
           codigo: this.state.codeStudent,
-          horario:this.state.date
+          horario: this.state.date,
+          telefono: this.state.phone
         });
       this.setState({
         open: false
@@ -183,6 +185,14 @@ export default withStyles(styles)(
     handleChange = name => event => {
       this.setState({ [name]: event.target.value });
     };
+
+    addH() {
+      let aux = this.state.date;
+      aux.push({ dia: 0, horaI: 0, horaF: 0 });
+      this.setState({
+        date: aux
+      });
+    }
 
     render() {
       const { classes } = this.props;
@@ -329,27 +339,18 @@ export default withStyles(styles)(
               >
                 Horario
               </Typography>
-              <FormControl className={classes.formControl}>
-                <InputLabel htmlFor="age-simple">Dia</InputLabel>
-                <Select
-                  value={this.state.date}
-                  onChange={this.handleChange("date")}
-                  inputProps={{
-                    name: "date",
-                    id: "age-simple"
-                  }}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={"Lunes"}>Lunes</MenuItem>
-                  <MenuItem value={"Martes"}>Martes</MenuItem>
-                  <MenuItem value={"Miercoles"}>Miércoles</MenuItem>
-                  <MenuItem value={"Jueves"}>Jueves</MenuItem>
-                  <MenuItem value={"Viernes"}>Viernes</MenuItem>
-                  <MenuItem value={"Sabado"}>Sabado</MenuItem>
-                </Select>
-              </FormControl>
+              <p onClick={this.addH}>+</p>
+              {this.state.date.map((key, i) => {
+                return (
+                  <HorarioMonitores
+                    key={i}
+                    keyH={i}
+                    dia={key.dia}
+                    horaI={key.horaI}
+                    horaF={key.horaF}
+                  />
+                );
+              })}
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">

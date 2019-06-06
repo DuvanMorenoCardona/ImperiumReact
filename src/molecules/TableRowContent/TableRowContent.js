@@ -97,7 +97,17 @@ export default withStyles(styles)(
 
     handleClickOpen() {
       this.setState({
-        open: true
+        open: true,
+        name: this.props.thisUser.nombre,
+        lastName: this.props.thisUser.apellido,
+        email: this.props.thisUser.correo,
+        dateAge: this.props.thisUser.fechaNacimiento,
+        phone: this.props.thisUser.telefono,
+        program: this.props.thisUser.carrera,
+        cedula: this.props.thisUser.cedula,
+        celPhone: this.props.thisUser.celular,
+        codeStudent: this.props.thisUser.codigo,
+        semestre: this.props.thisUser.semestre
       });
     }
 
@@ -130,21 +140,23 @@ export default withStyles(styles)(
     }
 
     handleSendDatabase() {
-      console.log(this.props.thisUser.cedula);
+      console.log("gg");
       firebase
         .database()
-        .ref("Monitor/" + this.props.thisUser.cedula)
-        .set({
-          nombre: this.props.thisUser.nombre,
-          apellido: this.props.thisUser.apellido,
-          correo: this.props.thisUser.correo,
-          cedula: this.props.thisUser.cedula,
-          carrera: this.props.thisUser.carrera,
-          celular: this.props.thisUser.celular,
-          fechaNacimiento: this.props.thisUser.fechaNacimiento,
-          semestre: this.props.thisUser.semestre,
-          codigo: this.props.thisUser.codigo
+        .ref("Monitor/" + this.state.cedula)
+        .update({
+          nombre: this.state.name,
+          apellido: this.state.lastName,
+          correo: this.state.email,
+          cedula: this.state.cedula,
+          carrera: this.state.program,
+          telefono: this.state.phone,
+          celular: this.state.celPhone,
+          fechaNacimiento: this.state.dateAge,
+          semestre: this.state.semestre,
+          codigo: this.state.codeStudent
         });
+      
       this.setState({
         open: false
       });
