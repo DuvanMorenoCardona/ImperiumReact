@@ -12,17 +12,45 @@
 }
 
 
-
-.fc-toolbar {
+/* .fc-toolbar {
     display: none;
+} */
+
+
+.fc-row .fc-week .fc-widget-content {
+    height: 2em;
 }
+
+.fc-day-grid {
+    height: 50% !important;
+}
+
+tr {
+    height: 2em;
+}
+
+
+.fc-view .fc-dayGridMonth-view .fc-dayGrid-view{
+    height: 50% !important;
+    width: 95% !important;
+}
+
+.fc-scroller {
+    height: 50% !important;
+//     width: 95% !important;
+}
+
+// .fc-view-container {
+//     height: 50% !important;
+//     width: 95% !important;
+// }
 
 .fc-day-top {
     padding: 0 7.5% !important;
 }
 
 .fc-day-number {
-    font-size: .5em;
+    font-size: 1em;
     font-weight: bold;
     
 }

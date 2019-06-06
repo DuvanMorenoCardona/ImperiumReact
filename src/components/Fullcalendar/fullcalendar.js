@@ -161,12 +161,14 @@ export default class DemoApp extends React.Component {
         <FullCalendar
           className="dmc-FullCalendar"
           defaultView="dayGridMonth"
+          height="100"
+          contentHeight = '9999'
           dateClick={this.handleDateClick}
           plugins={[dayGridPlugin, timeGridPlugin]}
           header={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
           }}
           events={this.state.events}
           eventClick={this.eventClick}

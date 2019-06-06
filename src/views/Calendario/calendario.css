@@ -8,7 +8,10 @@
   --color-gradient: linear-gradient(to right, #7101e7, #bc028e, #f90247);
 }
 
-
+.content-calendar {
+  /* height: 50% !important; */
+  margin: 0px;
+}
 
 .btn-addevent {
     background-color: var(--Color-text) !important;

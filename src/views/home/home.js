@@ -17,9 +17,9 @@ const styles = theme => ({
   root: {
     height: "100vh !important",
     width: "100vw !important"
-  }, 
+  },
   content: {
-    height: "95% !important",
+    height: "94% !important",
     width: "100% !important"
   }
 });
@@ -45,11 +45,11 @@ export default withStyles(styles)(
         <BrowserRouter>
           <div className={classes.root}>
             <NavBar window={this.state.window} />
-            <Grid container spacing={12} className={classes.content}>
+           <Grid container spacing={12} className={classes.content}>
               <Grid item lg={2} md={3} sm={3} xs={3}>
                 <LeftAppBar />
               </Grid>
-              <Grid item row lg={10} md={3} sm={3} xs={3}>
+              <Grid item lg={10} md={3} sm={3} xs={3}>
                 <Switch>
                   <Route
                     exact
@@ -74,11 +74,10 @@ export default withStyles(styles)(
                   />
                 </Switch>
               </Grid>
-            </Grid>
+          </Grid >
           </div>
         </BrowserRouter>
-      );
+                  );
     }
   }
 );
-
