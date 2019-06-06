@@ -130,7 +130,7 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <div>
-          <AppBar position="fixed" className={classes.AppBar}>
+          <AppBar position="relative" className={classes.AppBar}>
             <Toolbar>
               <div className={classes.grow}>
                 <Typography variant="h4" color="inherit">

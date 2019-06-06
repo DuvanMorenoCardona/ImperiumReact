@@ -13,8 +13,7 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { withStyles } from "@material-ui/core/styles";
 
 // Importar rutas
-import { NavLink  } from 'react-router-dom';
-
+import { NavLink } from "react-router-dom";
 
 const styles = theme => ({
   menuItem: {
@@ -29,12 +28,6 @@ const styles = theme => ({
   paper: {
     height: "100%",
     padding: "0px !important"
-  },
-  paperFixed: {
-    height: "100%",
-    padding: "0px !important",
-    position: "fixed",
-    marginTop:"70px"
   },
   primary: {
     fontSize: "25px"
@@ -59,46 +52,46 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div className={classes.paper}>
-          <Paper className={classes.paperFixed}>
-            <MenuList className={classes.paper}>
-              <MenuItem className={classes.menuItem}>
-                <NavLink exact to="./Calendario">
-                  <ListItemIcon>
-                    <CalendarIcon className={classes.icon} />
-                  </ListItemIcon>
-                  <ListItemText
-                    classes={{ primary: classes.primary }}
-                    inset
-                    primary="Calendario"
-                  />
-                </NavLink>
-              </MenuItem>
-              <MenuItem className={classes.menuItem}>
-                <NavLink to="./Monitores">
-                  <ListItemIcon>
-                    <GroupIcon className={classes.icon} />
-                  </ListItemIcon>
-                  <ListItemText
-                    classes={{ primary: classes.primary }}
-                    inset
-                    primary="Monitores"
-                  />
-                </NavLink>
-              </MenuItem>
+        <Paper
+        className={classes.paper}
+        >
+          <MenuList>
+            <NavLink exact to="./Calendario">
               <MenuItem className={classes.menuItem}>
                 <ListItemIcon>
-                  <SettingsIcon className={classes.icon} />
+                  <CalendarIcon className={classes.icon} />
                 </ListItemIcon>
                 <ListItemText
                   classes={{ primary: classes.primary }}
                   inset
-                  primary="Ajustes"
+                  primary="Calendario"
                 />
               </MenuItem>
-            </MenuList>
-          </Paper>
-        </div>
+            </NavLink>
+            <NavLink to="./Monitores">
+              <MenuItem className={classes.menuItem}>
+                <ListItemIcon>
+                  <GroupIcon className={classes.icon} />
+                </ListItemIcon>
+                <ListItemText
+                  classes={{ primary: classes.primary }}
+                  inset
+                  primary="Monitores"
+                />
+              </MenuItem>
+            </NavLink>
+            <MenuItem className={classes.menuItem}>
+              <ListItemIcon>
+                <SettingsIcon className={classes.icon} />
+              </ListItemIcon>
+              <ListItemText
+                classes={{ primary: classes.primary }}
+                inset
+                primary="Ajustes"
+              />
+            </MenuItem>
+          </MenuList>
+        </Paper>
       );
     }
   }

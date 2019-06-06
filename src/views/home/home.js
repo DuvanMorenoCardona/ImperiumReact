@@ -11,8 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 
 // Importar Router
-import { BrowserRouter ,HashRouter, Route, Switch } from "react-router-dom";
-import ReactDOM from "react-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 
 const styles = theme => ({
   root: {
@@ -52,24 +51,30 @@ export default withStyles(styles)(
       const { classes } = this.props;
       return (
         <BrowserRouter>
-          <div style={{ height: "100%" }}>
-            <NavBar />
-            <Grid container className={classes.LeftBar} spacing={16}>
-              <Grid item xs={3} className={classes.LeftAppBar}>
-                <LeftAppBar />
-              </Grid>
-              <Grid>
-                <Switch>
-                  <Route
-                    exact
-                    path="/Calendario"
-                    render={() => <Calendario />}
-                  />
-                  <Route path="/Monitores" render={() => <Monitores />} />
-                </Switch>
-              </Grid>
+          <Grid container spacing={12}>
+            <Grid item lg={12} md={12} sm={12} xs={12}>
+              <NavBar />
             </Grid>
-          </div>
+          </Grid>
+          
+          <Grid container className={classes.LeftBar} spacing={12}>
+            <Grid
+              item
+              lg={3}
+              md={3}
+              sm={3}
+              xs={3}
+              className={classes.LeftAppBar}
+            >
+              <LeftAppBar />
+            </Grid>
+            <Grid item lg={9} md={9} sm={9} xs={9}>
+              <Switch>
+                <Route exact path="/Calendario" render={() => <Calendario />} />
+                <Route path="/Monitores" render={() => <Monitores />} />
+              </Switch>
+            </Grid>
+          </Grid>
         </BrowserRouter>
       );
     }
