@@ -12,8 +12,6 @@ export default class NavBar extends Component {
   }
   render() {
 
-    return (
-        <AppBar />
-    );
+    return <AppBar window={this.props.window} />;
   }
 }
