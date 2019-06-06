@@ -29,7 +29,7 @@ export default class ButtonFloat extends Component {
 
     this.state = {
       // Variable para abrir cerrar Model
-      open: true,
+      open: false,
       // Variables de model
       nameEvent: "",
       dependence: "",
