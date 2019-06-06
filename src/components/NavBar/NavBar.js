@@ -11,6 +11,11 @@ export default class NavBar extends Component {
   }
   render() {
 
-    return <AppBar window={this.props.window} />;
+    return (
+      <AppBar
+        window={this.props.window}
+        changeCalendarView={this.props.changeCalendarView}
+      />
+    );
   }
 }

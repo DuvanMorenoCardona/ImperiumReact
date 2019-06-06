@@ -1,15 +1,16 @@
-@import '~@fullcalendar/core/main.css';
-@import '~@fullcalendar/daygrid/main.css';
+@import "~@fullcalendar/core/main.css";
+@import "~@fullcalendar/daygrid/main.css";
 
 /* Variables globales */
 :root {
-    --Color-text : #DB0517;
-    --Color-btn : #090619;
-    --color-brand: #7101E7;
-    --color-brand-secondary: #BC028E;
-    --color-brand-third: #F90247;
-    --color-gradient: linear-gradient(to right, #7101E7, #BC028E, #F90247);
+  --Color-text: #db0517;
+  --Color-btn: #090619;
+  --color-brand: #7101e7;
+  --color-brand-secondary: #bc028e;
+  --color-brand-third: #f90247;
+  --color-gradient: linear-gradient(to right, #7101e7, #bc028e, #f90247);
 }
+
 
 
 /* .fc-toolbar {
@@ -30,6 +31,7 @@ tr {
 }
 
 
+
 .fc-view .fc-dayGridMonth-view .fc-dayGrid-view{
     height: 50% !important;
     width: 95% !important;
@@ -46,20 +48,48 @@ tr {
 // }
 
 .fc-day-top {
-    padding: 0 7.5% !important;
+  padding: 0 7.5% !important;
 }
 
 .fc-day-number {
-    font-size: 1em;
-    font-weight: bold;
-    
+
+  font-size: 1em;
+  font-weight: bold;
+}
+
+button.fc-prev-button.fc-button.fc-button-primary {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+button.fc-next-button.fc-button.fc-button-primary {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+button.fc-today-button.fc-button.fc-button-primary {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+button.fc-dayGridMonth-button.fc-button.fc-button-primary.fc-button-active {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+button.fc-timeGridWeek-button.fc-button.fc-button-primary {
+  background: #b71c1c;
+  border-color: #b71c1c;
+}
+
+button.fc-timeGridDay-button.fc-button.fc-button-primary {
+  background: #b71c1c;
+  border-color: #b71c1c;
 }
 
 .fc-day-header {
-    color: var(--Color-text);
-    text-align: center;
-    font-size: .8em;
-    padding: .8em !important; 
-    border-style: none !important;
-    
+  color: var(--Color-text);
+  text-align: center;
+  font-size: 0.8em;
+  padding: 0.8em !important;
+  border-style: none !important;
 }

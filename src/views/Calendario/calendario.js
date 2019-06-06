@@ -56,7 +56,7 @@ export default withStyles(styles)(
       return (
 
         <div className="content-calendar">
-          <Fullcalendar />
+          <Fullcalendar viewCalendar={this.props.viewCalendar}/>
           <ButtonFloat  text="Evento" />
         </div>
       );

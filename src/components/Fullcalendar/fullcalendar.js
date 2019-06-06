@@ -1,6 +1,7 @@
 import React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import esLocale from "@fullcalendar/core/locales/es";
 
 import timeGridPlugin from "@fullcalendar/timegrid";
 
@@ -40,7 +41,8 @@ export default class DemoApp extends React.Component {
       observation: "",
       monitors: "",
       hour1: "",
-      hour2: ""
+      hour2: "",
+      calendar: "dayGridMonth"
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -79,12 +81,7 @@ export default class DemoApp extends React.Component {
   }
 
   eventClick(info) {
-    // alert("Event: " + info.event.title);
-    // alert("Coordinates: " + info.jsEvent.pageX + "," + info.jsEvent.pageY);
-    // alert("View: " + info.view.type);
-
-    // // change the border color just for fun
-    // info.el.style.borderColor = "red";
+    console.log(info)
     const attemptEvents = firebase
       .database()
       .ref()
@@ -107,10 +104,6 @@ export default class DemoApp extends React.Component {
         open: true
       });
     });
-
-    // this.setState({
-    //   open: true
-    // });
   }
 
   handleClose() {
@@ -165,6 +158,9 @@ export default class DemoApp extends React.Component {
           contentHeight = '9999'
           dateClick={this.handleDateClick}
           plugins={[dayGridPlugin, timeGridPlugin]}
+          locales={esLocale}
+          locale="es"
+          eventColor="#b71c1c"
           header={{
             left: "prev,next today",
             center: "title",

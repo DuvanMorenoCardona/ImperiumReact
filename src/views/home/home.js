@@ -6,6 +6,7 @@ import LeftAppBar from "../../molecules/LeftAppBar/LeftAppBar";
 import Calendario from "../Calendario/calendario";
 import Monitores from "../Monitores/Monitores";
 
+
 // Importar Componentes de Material-Ui
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
@@ -29,9 +30,11 @@ export default withStyles(styles)(
     constructor(props) {
       super(props);
       this.state = {
-        window: ""
+        window: "",
+        calendar: "dayGridMonth"
       };
       this.changeView = this.changeView.bind(this);
+      this.changeCalendarView = this.changeCalendarView.bind(this);
     }
     changeView(data) {
       this.setState({
@@ -39,13 +42,21 @@ export default withStyles(styles)(
       });
     }
 
+    changeCalendarView(data) {
+      console.log(data);
+      this.setState({
+        calendar:data
+      })
+    }
+
     render() {
       const { classes } = this.props;
       return (
         <BrowserRouter>
           <div className={classes.root}>
-            <NavBar window={this.state.window} />
+          <NavBar window={this.state.window} changeCalendarView={this.changeCalendarView}/>
            <Grid container spacing={12} className={classes.content}>
+
               <Grid item lg={2} md={3} sm={3} xs={3}>
                 <LeftAppBar />
               </Grid>
@@ -59,6 +70,7 @@ export default withStyles(styles)(
                         {...props}
                         window="calendar"
                         changeViewFunction={this.changeView}
+                        viewCalendar={this.state.calendar}
                       />
                     )}
                   />

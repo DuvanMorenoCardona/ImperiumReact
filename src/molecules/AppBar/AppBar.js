@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import "./AppBar.css";
 
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -37,7 +38,7 @@ const styles = theme => ({
     backgroundColor: "#b71c1c",
     top: 0,
     bottom: "auto",
-    height: "5% !important",
+    height: "5% !important"
   },
   search: {
     position: "relative",
@@ -106,8 +107,7 @@ export default withStyles(styles)(
       };
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
     handleMenu = event => {
       this.setState({ anchorEl: event.currentTarget });
@@ -125,7 +125,7 @@ export default withStyles(styles)(
       const { auth, anchorEl } = this.state;
       const open = Boolean(anchorEl);
       const { classes } = this.props;
-      if (this.props.window=="monitor") {
+      if (this.props.window == "monitor") {
         return (
           <div>
             <AppBar position="relative" className={classes.AppBar}>
@@ -138,7 +138,7 @@ export default withStyles(styles)(
                     Filtrar
                   </Button>
                 </div>
-  
+
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
                     <SearchIcon />
@@ -151,10 +151,7 @@ export default withStyles(styles)(
                     }}
                   />
                 </div>
-                <FormControl
-                  variant="outlined"
-                  className={classes.formControl}
-                >
+                <FormControl variant="outlined" className={classes.formControl}>
                   <InputLabel
                     ref={ref => {
                       this.InputLabelRef = ref;
@@ -167,10 +164,7 @@ export default withStyles(styles)(
                     value={this.state.age}
                     onChange={this.handleChange("age")}
                     input={
-                      <OutlinedInput
-                        name="age"
-                        id="outlined-age-simple"
-                      />
+                      <OutlinedInput name="age" id="outlined-age-simple" />
                     }
                   >
                     <MenuItem value="">
@@ -216,63 +210,95 @@ export default withStyles(styles)(
           </div>
         );
       } else {
-          return (
-            <div>
-              <AppBar position="relative" className={classes.AppBar}>
-                <Toolbar>
-                  <div className={classes.grow}>
-                    <Typography variant="h4" color="inherit">
-                      IMPERIUM
-                    </Typography>
-                  </div>
-    
-                  <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                      <SearchIcon />
-                    </div>
-                    <InputBase
-                      placeholder="Search…"
-                      classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput
+        return (
+          <div>
+            <AppBar position="relative" className={classes.AppBar}>
+              <Toolbar>
+                <div className={classes.grow}>
+                  <Typography variant="h4" color="inherit">
+                    IMPERIUM
+                  </Typography>
+                  <div>
+                    <Button
+                      color="inherit"
+                      className={classes.button}
+                      onClick={e => {
+                        this.props.changeCalendarView("timeGridDay");
                       }}
-                    />
+                    >
+                      Dia
+                    </Button>
+                    <Button
+                      color="inherit"
+                      className={classes.button}
+                      onClick={e => {
+                        this.props.changeCalendarView(
+                          "timeGridWeek"
+                        );
+                      }}
+                    >
+                      Semana
+                    </Button>
+                    <Button
+                      color="inherit"
+                      className={classes.button}
+                      onClick={e => {
+                        this.props.changeCalendarView(
+                          "dayGridMonth"
+                        );
+                      }}
+                    >
+                      Mes
+                    </Button>
                   </div>
-                  {auth && (
-                    <div>
-                      <IconButton
-                        aria-owns={open ? "menu-appbar" : undefined}
-                        aria-haspopup="true"
-                        onClick={this.handleMenu}
-                        color="inherit"
-                      >
-                        <Avatar className={classes.avatar}>H</Avatar>
-                      </IconButton>
-                      <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                          vertical: "top",
-                          horizontal: "right"
-                        }}
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "right"
-                        }}
-                        open={open}
-                        onClose={this.handleClose}
-                      >
-                        <MenuItem>Perfil</MenuItem>
-                        <MenuItem>Mi Cuenta</MenuItem>
-                        <MenuItem>Cerrar Sesion</MenuItem>
-                      </Menu>
-                    </div>
-                  )}
-                </Toolbar>
-              </AppBar>
-            </div>
-          );
-        
+                </div>
+
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput
+                    }}
+                  />
+                </div>
+                {auth && (
+                  <div>
+                    <IconButton
+                      aria-owns={open ? "menu-appbar" : undefined}
+                      aria-haspopup="true"
+                      onClick={this.handleMenu}
+                      color="inherit"
+                    >
+                      <Avatar className={classes.avatar}>H</Avatar>
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right"
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right"
+                      }}
+                      open={open}
+                      onClose={this.handleClose}
+                    >
+                      <MenuItem>Perfil</MenuItem>
+                      <MenuItem>Mi Cuenta</MenuItem>
+                      <MenuItem>Cerrar Sesion</MenuItem>
+                    </Menu>
+                  </div>
+                )}
+              </Toolbar>
+            </AppBar>
+          </div>
+        );
       }
     }
   }
