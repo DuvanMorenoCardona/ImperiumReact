@@ -170,9 +170,9 @@ export default withStyles(styles)(
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>Nombre</MenuItem>
-                    <MenuItem value={20}>Semestre</MenuItem>
-                    <MenuItem value={30}>Carrera</MenuItem>
+                    <MenuItem >Nombre</MenuItem>
+                    <MenuItem >Semestre</MenuItem>
+                    <MenuItem >Carrera</MenuItem>
                   </Select>
                 </FormControl>
                 {auth && (
@@ -218,40 +218,7 @@ export default withStyles(styles)(
                   <Typography variant="h4" color="inherit">
                     IMPERIUM
                   </Typography>
-                  <div>
-                    <Button
-                      color="inherit"
-                      className={classes.button}
-                      onClick={e => {
-                        this.props.changeCalendarView("timeGridDay");
-                      }}
-                    >
-                      Dia
-                    </Button>
-                    <Button
-                      color="inherit"
-                      className={classes.button}
-                      onClick={e => {
-                        this.props.changeCalendarView(
-                          "timeGridWeek"
-                        );
-                      }}
-                    >
-                      Semana
-                    </Button>
-                    <Button
-                      color="inherit"
-                      className={classes.button}
-                      onClick={e => {
-                        this.props.changeCalendarView(
-                          "dayGridMonth"
-                        );
-                      }}
-                    >
-                      Mes
-                    </Button>
-                  </div>
-                </div>
+                 </div>
 
                 <div className={classes.search}>
                   <div className={classes.searchIcon}>
