@@ -35,6 +35,8 @@ export default withStyles(styles)(
     }
 
     componentWillMount() {
+      /* console.log(this.props.window); */
+      this.props.changeViewFunction(this.props.window);
       const EventsFirebase = firebase
         .database()
         .ref()
@@ -52,7 +54,8 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <div>
+
+        <div className="content-calendar">
           <Fullcalendar />
           <ButtonFloat  text="Evento" />
         </div>

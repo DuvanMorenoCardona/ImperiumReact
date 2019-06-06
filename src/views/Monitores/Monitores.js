@@ -130,6 +130,7 @@ export default withStyles(styles)(
     }
 
     componentWillMount() {
+      this.props.changeViewFunction(this.props.window);
       const attemptCard = firebase
         .database()
         .ref()

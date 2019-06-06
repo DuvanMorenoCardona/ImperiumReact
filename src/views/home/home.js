@@ -28,14 +28,23 @@ export default withStyles(styles)(
   class Home extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+        window: ""
+      };
+      this.changeView = this.changeView.bind(this);
     }
+    changeView(data) {
+      this.setState({
+        window: data
+      });
+    }
+
     render() {
       const { classes } = this.props;
       return (
         <BrowserRouter>
           <div className={classes.root}>
-            <NavBar />
+            <NavBar window={this.state.window} />
             <Grid container spacing={12} className={classes.content}>
               <Grid item lg={2} md={3} sm={3} xs={3}>
                 <LeftAppBar />
@@ -45,9 +54,24 @@ export default withStyles(styles)(
                   <Route
                     exact
                     path="/Calendario"
-                    render={() => <Calendario />}
+                    render={props => (
+                      <Calendario
+                        {...props}
+                        window="calendar"
+                        changeViewFunction={this.changeView}
+                      />
+                    )}
                   />
-                  <Route path="/Monitores" render={() => <Monitores />} />
+                  <Route
+                    path="/Monitores"
+                    render={props => (
+                      <Monitores
+                        {...props}
+                        window="monitor"
+                        changeViewFunction={this.changeView}
+                      />
+                    )}
+                  />
                 </Switch>
               </Grid>
             </Grid>

@@ -44,8 +44,8 @@ const styles = theme => ({
     color: "white"
   },
   top: {
-    marginTop: "5em",
-    marginLeft: "3em"
+    padding: "1em"
+    
   }
 });
 
