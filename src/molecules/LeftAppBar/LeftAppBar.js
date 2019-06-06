@@ -30,7 +30,8 @@ const styles = theme => ({
     padding: "0px !important"
   },
   primary: {
-    fontSize: "25px"
+    fontSize: "25px",
+    textDecoration: "none"
   },
   icon: {
     fontSize: "2.5em"
@@ -52,11 +53,9 @@ export default withStyles(styles)(
     render() {
       const { classes } = this.props;
       return (
-        <Paper
-        className={classes.paper}
-        >
+        <Paper className={classes.paper}>
           <MenuList>
-            <NavLink exact to="./Calendario">
+            <NavLink exact to="./Calendario" style={{ textDecoration: "none" }}>
               <MenuItem className={classes.menuItem}>
                 <ListItemIcon>
                   <CalendarIcon className={classes.icon} />
@@ -68,7 +67,7 @@ export default withStyles(styles)(
                 />
               </MenuItem>
             </NavLink>
-            <NavLink to="./Monitores">
+            <NavLink to="./Monitores" style={{ textDecoration: "none" }}>
               <MenuItem className={classes.menuItem}>
                 <ListItemIcon>
                   <GroupIcon className={classes.icon} />
