@@ -44,7 +44,8 @@ const styles = theme => ({
     color: "white"
   },
   top: {
-    paddingLeft: "1em"
+    padding: "1em"
+    
   }
 });
 
