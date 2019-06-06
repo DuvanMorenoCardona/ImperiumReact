@@ -45,18 +45,27 @@ export default withStyles(styles)(
   class Home extends Component {
     constructor(props) {
       super(props);
-      this.state = {};
+      this.state = {
+        window: ""
+      };
+      this.changeView = this.changeView.bind(this);
     }
+    changeView(data) {
+      this.setState({
+        window: data
+      });
+    }
+
     render() {
       const { classes } = this.props;
       return (
         <BrowserRouter>
           <Grid container spacing={12}>
             <Grid item lg={12} md={12} sm={12} xs={12}>
-              <NavBar />
+              <NavBar window={this.state.window} />
             </Grid>
           </Grid>
-          
+
           <Grid container className={classes.LeftBar} spacing={12}>
             <Grid
               item
@@ -70,8 +79,27 @@ export default withStyles(styles)(
             </Grid>
             <Grid item lg={9} md={9} sm={9} xs={9}>
               <Switch>
-                <Route exact path="/Calendario" render={() => <Calendario />} />
-                <Route path="/Monitores" render={() => <Monitores />} />
+                <Route
+                  exact
+                  path="/Calendario"
+                  render={props => (
+                    <Calendario
+                      {...props}
+                      window="calendar"
+                      changeViewFunction={this.changeView}
+                    />
+                  )}
+                />
+                <Route
+                  path="/Monitores"
+                  render={props => (
+                    <Monitores
+                      {...props}
+                      window="monitor"
+                      changeViewFunction={this.changeView}
+                    />
+                  )}
+                />
               </Switch>
             </Grid>
           </Grid>

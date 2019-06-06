@@ -101,15 +101,11 @@ export default withStyles(styles)(
       this.state = {
         auth: true,
         anchorEl: null,
-        age: "",
-        labelWidth: 0
+        age: ""
       };
     }
 
     componentDidMount() {
-      this.setState({
-        labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth
-      });
     }
 
     handleMenu = event => {
@@ -128,7 +124,156 @@ export default withStyles(styles)(
       const { auth, anchorEl } = this.state;
       const open = Boolean(anchorEl);
       const { classes } = this.props;
-      return (
+      if (this.props.window=="monitor") {
+        return (
+          <div>
+            <AppBar position="relative" className={classes.AppBar}>
+              <Toolbar>
+                <div className={classes.grow}>
+                  <Typography variant="h4" color="inherit">
+                    IMPERIUM
+                  </Typography>
+                  <Button color="inherit" className={classes.button}>
+                    Filtrar
+                  </Button>
+                </div>
+  
+                <div className={classes.search}>
+                  <div className={classes.searchIcon}>
+                    <SearchIcon />
+                  </div>
+                  <InputBase
+                    placeholder="Search…"
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput
+                    }}
+                  />
+                </div>
+                <FormControl
+                  variant="outlined"
+                  className={classes.formControl}
+                >
+                  <InputLabel
+                    ref={ref => {
+                      this.InputLabelRef = ref;
+                    }}
+                    htmlFor="outlined-age-simple"
+                  >
+                    Filtrar por
+                  </InputLabel>
+                  <Select
+                    value={this.state.age}
+                    onChange={this.handleChange("age")}
+                    input={
+                      <OutlinedInput
+                        name="age"
+                        id="outlined-age-simple"
+                      />
+                    }
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Nombre</MenuItem>
+                    <MenuItem value={20}>Semestre</MenuItem>
+                    <MenuItem value={30}>Carrera</MenuItem>
+                  </Select>
+                </FormControl>
+                {auth && (
+                  <div>
+                    <IconButton
+                      aria-owns={open ? "menu-appbar" : undefined}
+                      aria-haspopup="true"
+                      onClick={this.handleMenu}
+                      color="inherit"
+                    >
+                      <Avatar className={classes.avatar}>H</Avatar>
+                    </IconButton>
+                    <Menu
+                      id="menu-appbar"
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "right"
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "right"
+                      }}
+                      open={open}
+                      onClose={this.handleClose}
+                    >
+                      <MenuItem>Perfil</MenuItem>
+                      <MenuItem>Mi Cuenta</MenuItem>
+                      <MenuItem>Cerrar Sesion</MenuItem>
+                    </Menu>
+                  </div>
+                )}
+              </Toolbar>
+            </AppBar>
+          </div>
+        );
+      } else {
+          return (
+            <div>
+              <AppBar position="relative" className={classes.AppBar}>
+                <Toolbar>
+                  <div className={classes.grow}>
+                    <Typography variant="h4" color="inherit">
+                      IMPERIUM
+                    </Typography>
+                  </div>
+    
+                  <div className={classes.search}>
+                    <div className={classes.searchIcon}>
+                      <SearchIcon />
+                    </div>
+                    <InputBase
+                      placeholder="Search…"
+                      classes={{
+                        root: classes.inputRoot,
+                        input: classes.inputInput
+                      }}
+                    />
+                  </div>
+                  {auth && (
+                    <div>
+                      <IconButton
+                        aria-owns={open ? "menu-appbar" : undefined}
+                        aria-haspopup="true"
+                        onClick={this.handleMenu}
+                        color="inherit"
+                      >
+                        <Avatar className={classes.avatar}>H</Avatar>
+                      </IconButton>
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "right"
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "right"
+                        }}
+                        open={open}
+                        onClose={this.handleClose}
+                      >
+                        <MenuItem>Perfil</MenuItem>
+                        <MenuItem>Mi Cuenta</MenuItem>
+                        <MenuItem>Cerrar Sesion</MenuItem>
+                      </Menu>
+                    </div>
+                  )}
+                </Toolbar>
+              </AppBar>
+            </div>
+          );
+        
+      }
+      /* return (
         <div>
           <AppBar position="relative" className={classes.AppBar}>
             <Toolbar>
@@ -163,7 +308,7 @@ export default withStyles(styles)(
                   }}
                   htmlFor="outlined-age-simple"
                 >
-                  Age
+                  Filtrar por
                 </InputLabel>
                 <Select
                   value={this.state.age}
@@ -179,9 +324,9 @@ export default withStyles(styles)(
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Nombre</MenuItem>
+                  <MenuItem value={20}>Semestre</MenuItem>
+                  <MenuItem value={30}>Carrera</MenuItem>
                 </Select>
               </FormControl>
               {auth && (
@@ -217,7 +362,7 @@ export default withStyles(styles)(
             </Toolbar>
           </AppBar>
         </div>
-      );
+      ); */
     }
   }
 );
